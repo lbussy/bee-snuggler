@@ -1,0 +1,52 @@
+main>.container {
+    padding: 60px 15px 0;
+}
+
+main>.container {
+    width: auto;
+    max-width: 1024px;
+    padding: 20px 15px 0;
+}
+
+.footer {
+    text-align: center;
+}
+
+.no-underline {
+    text-decoration: none !important;
+    color: rgba(255,255,255,.65)
+}
+
+.no-underline:hover {
+    color: rgba(255,255,255,1)
+}
+
+.plain-link {
+    text-decoration: none !important;
+    color: #000000;
+}
+
+.noButton{
+    pointer-events: none;
+}
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    border: 0;
+}
+
+br.responsive {
+    display: inline;
+}
+
+@media (min-width: 873px) {
+    br.responsive {
+        display: none;
+    }
+}

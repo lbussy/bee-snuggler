@@ -1,0 +1,1032 @@
+<!doctype html>
+<html lang="en" class="h-100">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <meta name="description" content="Bee Snuggler, a Beekeeping application">
+    <meta name="author" content="Lee Bussy">
+
+    <title>Bee Snuggler</title>
+
+    <link rel="canonical" href="https://www.beesnuggler.com/">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+
+    <link rel="stylesheet" href="/bootstrap.min.css">
+    <link rel="stylesheet" href="/common.css">
+    <link rel="stylesheet" href="/loader.css">
+    <link rel="stylesheet" href="/bootstrap-slider.min.css">
+    <script src="/loader.js"></script>
+</head>
+
+<body class="d-flex flex-column h-100">
+
+    <header>
+
+        <!-- Nav Bar -->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+            <a class="navbar-brand" href="/">
+                &nbsp;
+                <img src="/pageicon.png" style="width:25px;height:25px;">
+                &nbsp;Bee Snuggler
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01"
+                aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- Nav Bar Links -->
+            <div class="collapse navbar-collapse" id="navbarColor01">
+
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">Home</a>
+                    </li>
+                    <!-- <li class="nav-item">
+                        <a class="nav-link" href="/temps/">Temp Chart</a>
+                    </li> -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="/mitetreat/">Mite Treatment</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link active" href="/settings/">Settings <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/help/">Help</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/about/">About</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav ms-md-auto">
+                    <li class="nav-item">
+                        <a id="contexthelp" name="contexthelp" class="navbar-brand nav-link text-right" target="_blank"
+                            href="https://docs.beesnuggler.com/en/latest/index.html">?</a>
+                    </li>
+                </ul>
+            </div> <!-- Nav Bar Links -->
+
+        </nav> <!-- Nav Bar -->
+
+    </header>
+
+    <main role="main" class="flex-shrink-0">
+
+        <div id="settingsAlert_placeholder"></div>
+        <div id="tempAlert_placeholder"></div>
+        <div id="configAlert_placeholder"></div>
+
+        <div class="loader" id="loader"></div>
+
+        <div class="container" id="settingsApp" style="visibility:hidden;">
+
+            <div class="card border-dark mb-3">
+
+                <!-- Nav Tabs -->
+                <ul class="nav nav-tabs">
+
+                    <!-- Controller Nav Item -->
+                    <li class="nav-item dropdown">
+                        <span class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                            aria-expanded="false">Controller</span>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" data-toggle="tab" href="#controller">Controller</a>
+                            <a class="dropdown-item" data-toggle="tab" href="#accesspoint">WiFi</a>
+                        </div>
+                    </li> <!-- Controller Nav Item -->
+
+                    <!-- Temperature Nav Item -->
+                    <li class="nav-item dropdown">
+                        <span class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                            aria-expanded="false">Temperature</span>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" data-toggle="tab" href="#tempcontrol">Temp Control</a>
+                            <a class="dropdown-item" data-toggle="tab" href="#outputcontrol">Output Air Limits</a>
+                            <a class="dropdown-item" data-toggle="tab" href="#fancontrol">Fan Control</a>
+                            <a class="dropdown-item" data-toggle="tab" href="#sensorcontrol">Sensors Config</a>
+                        </div>
+                    </li> <!-- Temperature Nav Item -->
+
+                    <!-- Advanced Nav Item -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button"
+                            aria-haspopup="true" aria-expanded="false">Advanced</a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" data-toggle="tab" href="#pwmheat">Heat PWM Control</a>
+                            <a class="dropdown-item" data-toggle="tab" href="#pwmfan">Fan PWM Control</a>
+                            <a class="dropdown-item" data-toggle="tab" href="#reset">Reset Controller</a>
+                            <a class="dropdown-item" data-toggle="tab" href="#update">Update Application</a>
+                            <a class="dropdown-item" data-toggle="tab" href="#wifi">Reset Wifi</a>
+                        </div>
+                    </li> <!-- Advanced Nav Item -->
+
+                </ul> <!-- Nav Tabs -->
+
+                <!-- Nav Tab Content -->
+                <div id="myTabContent" class="tab-content">
+
+                    <!-- Initial Page Tab -->
+                    <div class="tab-pane fade active show" id="initial">
+
+                        <div class="card-header">
+                            <h4 class="card-title">Settings for Bee Snuggler</h4>
+                        </div>
+                        <div class="card-body">
+                            <p>
+                                Use the tabs above to navigate the various settings and customize Bee Snuggler
+                                for your own use. Be sure to use the update button after changing a field.
+                            </p>
+                        </div>
+                    </div> <!-- Initial Page Tab -->
+
+                    <!-- Controller Settings Tab -->
+                    <div class="tab-pane fade" id="controller">
+
+                        <div class="card-header">
+                            <h4 class="card-title">Controller Settings</h4>
+                        </div>
+
+                        <div class="card-body">
+                            <form id="controller" action="/api/v1/config/" method="POST"
+                                onsubmit="return processPost(this);">
+
+                                <ul class="list-group">
+                                    <li class="list-group-item">
+
+                                        <div class="form-group row">
+                                            <label for="hostname" class="col-sm-2 col-form-label" data-toggle="tooltip"
+                                                title="Change host name. Do not add the &ldquo;.local&rdquo; to the name">
+                                                Host Name
+                                            </label>
+                                            <div class="col-sm-10">
+                                                <input type="text" class="form-control" id="hostname" name="hostname"
+                                                    minlength="3" maxlength="32" placeholder="Hostname" required>
+                                            </div>
+                                        </div>
+
+                                        <p></p>
+
+                                        <div class="form-group row">
+                                            <label for="yardname" class="col-sm-2 col-form-label" data-toggle="tooltip"
+                                                title="Change the name of the yard in which this hive resides">
+                                                Yard Name
+                                            </label>
+                                            <div class="col-sm-10">
+                                                <input type="text" class="form-control" id="yardname" name="yardname"
+                                                    minlength="3" maxlength="32" placeholder="Yard 1" required>
+                                            </div>
+                                        </div>
+
+                                        <p></p>
+
+                                        <div class="form-group row">
+                                            <label for="hivename" class="col-sm-2 col-form-label" data-toggle="tooltip"
+                                                title="Change the name of this hive">
+                                                Hive Name
+                                            </label>
+                                            <div class="col-sm-10">
+                                                <input type="text" class="form-control" id="hivename" name="hivename"
+                                                    minlength="3" maxlength="32" placeholder="Hive 1" required>
+                                            </div>
+                                        </div>
+
+                                        <p></p>
+
+                                        <fieldset class="form-group">
+                                            <div class="form-group row">
+                                                <label for="hivename" class="col-sm-2 col-form-label"
+                                                    data-toggle="tooltip"
+                                                    title="Toggle between metric or imperial units">
+                                                    Units
+                                                </label>
+                                                <div class="col-sm-10">
+                                                    <div class="form-check">
+                                                        <label class="form-check-label" data-toggle="tooltip"
+                                                            title="Change the application to use metric units (℃ and Liters)">
+                                                            <input type="radio" class="form-check-input" name="imperial"
+                                                                id="imperial" value="false">
+                                                            Metric
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-check">
+                                                        <label class="form-check-label" data-toggle="tooltip"
+                                                            title="Change the to use imperial units (℉ and Gallons)">
+                                                            <input type="radio" class="form-check-input" name="imperial"
+                                                                id="imperial" value="true">
+                                                            Imperial
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </fieldset>
+                                    </li>
+                                </ul>
+                                <p></p>
+                                <div class="row col-sm-12">
+                                    <div class="col text-center">
+                                        <button id="submitSettings" type="submit" class="btn btn-primary">Update</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+
+                    </div> <!-- Controller Settings Tab -->
+
+                    <!-- Access Point Settings Tab -->
+                    <div class="tab-pane fade" id="accesspoint">
+
+                        <div class="card-header">
+                            <h4 class="card-title">Access Point Settings</h4>
+                        </div>
+
+                        <div class="card-body">
+                            <form id="accesspoint" action="/api/v1/config/" method="POST"
+                                onsubmit="return processPost(this);">
+
+                                <div class="form-group row">
+                                    <p>
+                                        TODO:  Connect to local network here.
+                                    </p>
+                                </div>
+
+                                <p></p>
+
+                                <div class="row col-sm-12">
+                                    <div class="col text-center">
+                                        <button id="submitSettings" type="submit" class="btn btn-primary">Update</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+
+                    </div> <!-- Access Point Settings Tab -->
+
+                    <!-- Temp Control Tab -->
+                    <div class="tab-pane fade" id="tempcontrol">
+
+                        <div class="card-header">
+                            <h4 class="card-title">Controller Settings</h4>
+                        </div>
+
+                        <div class="card-body">
+                            <form id="tempcontrol" action="/api/v1/config/" method="POST"
+                                onsubmit="return processPost(this);">
+
+                                <ul class="list-group">
+                                    <li class="list-group-item">
+
+                                        <div class="form-group row">
+                                            <label for="setpoint" class="col-sm-2 col-form-label" data-toggle="tooltip"
+                                                title="Enter the temperature setpoint in your selected units (&#x2109; or &#x2103;)">
+                                                Hive Set Point
+                                            </label>
+                                            <div class="col-sm-10">
+                                                <input type="number" class="form-control" id="setpoint" name="setpoint"
+                                                    min="-7" max="110" step=".1" placeholder="40.0" required>
+                                            </div>
+                                        </div>
+
+                                        <p></p>
+
+                                        <fieldset class="form-group">
+                                            <div class="form-group row">
+                                                <label for="enablecontrol" class="col-sm-2 col-form-label"
+                                                    data-toggle="tooltip"
+                                                    title="Turn temperature control on or off">
+                                                    Temp Control
+                                                </label>
+                                                <div class="col-sm-10">
+                                                    <div class="form-check">
+                                                        <label class="form-check-label" data-toggle="tooltip"
+                                                            title="Temperature control enabled">
+                                                            <input type="radio" class="form-check-input" name="enablecontrol"
+                                                                id="enablecontrol" value="true">
+                                                            Enabled
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-check">
+                                                        <label class="form-check-label" data-toggle="tooltip"
+                                                            title="Temperature control disabled">
+                                                            <input type="radio" class="form-check-input" name="enablecontrol"
+                                                                id="enablecontrol" value="false">
+                                                            Disabled
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </fieldset>
+
+                                        <p></p>
+
+                                        <div class="form-group row">
+                                            <label for="controlpoint" class="col-sm-2 col-form-label" data-toggle="tooltip"
+                                                title="Enter the control point to use for temp control">
+                                                Control Point
+                                            </label>
+                                            <div class="col-sm-10">
+                                                <select class="form-control" name="controlpoint" id="controlpoint">
+                                                    <option value="1">Upper Hive Temp Sensor</option>
+                                                    <option value="2">Center Hive Temp Sensor</option>
+                                                    <option value="3">Lower Hive Temp Sensor</option>
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <p></p>
+
+                                        <div class="form-group row">
+                                            <label for="treatpoint" class="col-sm-2 col-form-label" data-toggle="tooltip"
+                                                title="Enter the mite treatment setpoint in your selected units (&#x2109; or &#x2103;)">
+                                                Treatment Setting
+                                            </label>
+                                            <div class="col-sm-10">
+                                                <input type="number" class="form-control" name="treatpoint"
+                                                    id="treatpoint" min="35" max="118" step=".1"
+                                                    placeholder="108.0" required>
+                                            </div>
+                                        </div>
+
+                                        <p></p>
+
+                                        <div class="form-group row">
+                                            <label for="treatperiod" class="col-sm-2 col-form-label" data-toggle="tooltip"
+                                                title="Enter the mite treatment duration in minutes">
+                                                Treatment Length
+                                            </label>
+                                            <div class="col-sm-10">
+                                                <input type="number" class="form-control" name="treatperiod"
+                                                    id="treatperiod" min="15" max="300" step="1"
+                                                    placeholder="180" required>
+                                            </div>
+                                        </div>
+
+                                        <p></p>
+
+                                        <div class="form-group row">
+                                            <label for="coolperiod" class="col-sm-2 col-form-label" data-toggle="tooltip"
+                                                title="Enter the post-treatment cooldown duration in minutes">
+                                                Cooldown Period
+                                            </label>
+                                            <div class="col-sm-10">
+                                                <input type="number" class="form-control" name="coolperiod"
+                                                    id="coolperiod" min="1" max="15" step="1"
+                                                    placeholder="5" required>
+                                            </div>
+                                        </div>
+
+                                    </li>
+                                </ul>
+                                <p></p>
+                                <div class="row col-sm-12">
+                                    <div class="col text-center">
+                                        <button id="submitSettings" type="submit" class="btn btn-primary">Update</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+
+                    </div> <!-- Temp Control Tab -->
+
+                    <!-- Output Air Control Tab -->
+                    <div class="tab-pane fade" id="outputcontrol">
+
+                        <div class="card-header">
+                            <h4 class="card-title">Output Air Limits</h4>
+                        </div>
+
+                        <div class="card-body">
+                            <form id="outputcontrol" action="/api/v1/config/" method="POST"
+                                onsubmit="return processPost(this);">
+
+                                <ul class="list-group">
+                                    <li class="list-group-item">
+
+                                        <div class="form-group row">
+                                            <label for="outputmax" class="col-sm-2 col-form-label" data-toggle="tooltip"
+                                                title="Enter the maximum output temperature in your selected units (&#x2109; or &#x2103;)">
+                                                Max Output Temp
+                                            </label>
+                                            <div class="col-sm-10">
+                                                <input type="number" class="form-control" id="outputmax" name="outputmax"
+                                                    min="40" max="130" step=".1" placeholder="40.0" required>
+                                            </div>
+                                        </div>
+
+                                        <p></p>
+
+                                        <fieldset class="form-group">
+                                            <div class="form-group row">
+                                                <label for="enablemaxout" class="col-sm-2 col-form-label"
+                                                    data-toggle="tooltip"
+                                                    title="Turn output temperature control on or off">
+                                                    Output Control
+                                                </label>
+                                                <div class="col-sm-10">
+                                                    <div class="form-check">
+                                                        <label class="form-check-label" data-toggle="tooltip"
+                                                            title="Output temp control enabled">
+                                                            <input type="radio" class="form-check-input" name="enablemaxout"
+                                                                id="enablemaxout" value="true">
+                                                            Enabled
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-check">
+                                                        <label class="form-check-label" data-toggle="tooltip"
+                                                            title="Output temp control disabled">
+                                                            <input type="radio" class="form-check-input" name="enablemaxout"
+                                                                id="enablemaxout" value="false">
+                                                            Disabled
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </fieldset>
+                                    </li>
+                                </ul>
+                                <p></p>
+                                <div class="row col-sm-12">
+                                    <div class="col text-center">
+                                        <button id="submitSettings" type="submit" class="btn btn-primary">Update</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+
+                    </div> <!-- Output Air Control Tab -->
+
+                    <!-- Fan Control Tab -->
+                    <div class="tab-pane fade" id="fancontrol">
+
+                        <div class="card-header">
+                            <h4 class="card-title">Fan Control</h4>
+                        </div>
+
+                        <div class="card-body">
+                            <form id="fancontrol" action="/api/v1/config/" method="POST"
+                                onsubmit="return processPost(this);">
+
+                                <div class="container">
+                                    <div class="form-group row">
+
+                                        <div class="col-sm-1">&nbsp;</div>
+
+                                        <div class="col-sm-3">
+                                            <div>
+                                                <label for="enablefancontrol" class="col-form-label"
+                                                    data-toggle="tooltip"
+                                                    title="Turn fan control on or off">
+                                                    Heater Fan
+                                                </label>
+                                            </div>
+                                
+                                            <div>
+                                                <fieldset id="enfc">
+                                                    <div class="form-check">
+                                                        <label class="form-check-label" data-toggle="tooltip"
+                                                            title="Fan control enabled">
+                                                            <input type="radio" class="form-check-input" name="enablefancontrol"
+                                                                id="enablefancontrol0" value="true" onClick="fanClick(this.id)">
+                                                            Enabled
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-check">
+                                                        <label class="form-check-label" data-toggle="tooltip"
+                                                            title="Fan control disabled">
+                                                            <input type="radio" class="form-check-input" name="enablefancontrol"
+                                                                id="enablefancontrol1" value="false" onClick="fanClick(this.id)">
+                                                            Disabled
+                                                        </label>
+                                                    </div>
+                                                </fieldset>
+                                            </div>
+                                        </div>
+                                
+                                        <div class="col-sm-3">
+                                            <div>
+                                                <label for="proportionalfan" class="col-form-label"
+                                                    data-toggle="tooltip"
+                                                    title="Turn proportional fan control on or off">
+                                                    PID Control
+                                                </label>
+                                            </div>
+
+                                            <div>
+                                                <fieldset id="pidf">
+                                                    <div class="form-check">
+                                                        <label class="form-check-label" data-toggle="tooltip"
+                                                            title="Proportional fan control enabled">
+                                                            <input type="radio" class="form-check-input" name="proportionalfan"
+                                                                id="proportionalfan0" value="true" onClick="fanClick(this.id)">
+                                                            Enabled
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-check">
+                                                        <label class="form-check-label" data-toggle="tooltip"
+                                                            title="Proportional fan control disabled">
+                                                            <input type="radio" class="form-check-input" name="proportionalfan"
+                                                                id="proportionalfan1" value="false" onClick="fanClick(this.id)">
+                                                            Disabled
+                                                        </label>
+                                                    </div>
+                                                </fieldset>
+                                            </div>
+                                        </div>
+                                
+                                        <div class="col-sm-4">
+                                            <div>
+                                                <label for="fanrange" class="col-form-label"
+                                                    data-toggle="tooltip"
+                                                    title="Adjust upper and lower fan limits">
+                                                    Fan Speed Range
+                                                </label>
+                                            </div>
+                                
+                                            <div id="fanslid">
+                                                0%&nbsp;
+                                                <br class="responsive" />
+                                                <input id="fanrange" type="text" class="span2" value="" data-slider-min="0"
+                                                    data-slider-max="100" data-slider-step="5" data-slider-value="[10,90]"
+                                                    style="display: none" disabled/>
+                                                <br class="responsive" />
+                                                <label class="form-label">
+                                                    &nbsp;100%
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-sm-1">&nbsp;</div>
+
+                                </div>
+
+                                <p>&nbsp;</p>
+                                <div class="row col-sm-12">
+                                    <div class="col text-center">
+                                        <button id="submitSettings" type="submit" class="btn btn-primary">Update</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+
+                    </div> <!-- Fan Control Tab -->
+
+                    <!-- Sensor Control Tab -->
+                    <div class="tab-pane fade" id="sensorcontrol">  
+                        <div class="card-header">
+                            <h4 class="card-title">Temperature Sensor Control</h4>
+                        </div>
+                        <div class="card-body">
+
+                            <!-- Sensor Control Form-->
+                            <form class="form-group" id="sensorcontrol" action="/api/v1/config/" method="PUT"
+                                onsubmit="return processPost(this);">
+
+                                <!-- Ambient Sensor Control -->
+                                <div class="row col-sm-12 justify-content-center">
+
+                                    <!-- Calibration Offset -->
+                                    <div class="col-sm-2">
+                                        <label for="calambient" class="col-form-label" data-toggle="tooltip"
+                                            title="Value by which the ambient temperature display will be offset">Ambient
+                                        </label>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <input type="number" class="form-control" name="calambient" id="calambient"
+                                            min="-25" max="25" step=".01" placeholder="0.0">
+                                    </div>
+                                    <!-- Calibration Offset -->
+
+                                    <!-- Enable Sensor -->
+                                    <div class="col-sm-4">
+                                        <fieldset class="form-group">
+                                            <div class="row justify-content-center">
+                                                <div class="col-sm-3">
+                                                    <div class="form-check">
+                                                        <label class="form-check-label" data-toggle="tooltip"
+                                                            title="Sensor enabled">
+                                                            <input type="radio" class="form-check-input"
+                                                                name="enableambient" id="enableambient" value="true">
+                                                            Enabled
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-check">
+                                                        <label class="form-check-label" data-toggle="tooltip"
+                                                            title="Sensor disabled">
+                                                            <input type="radio" class="form-check-input"
+                                                                name="enableambient" id="enableambient" value="false">
+                                                            Disabled
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </fieldset>
+                                    </div>
+                                    <!-- Enable Sensor -->
+
+                                </div>
+                                <!-- Ambient Sensor Control -->
+
+                                <p></p>
+
+                                <!-- Upper Sensor Control -->
+                                <div class="row col-sm-12 justify-content-center">
+
+                                    <!-- Calibration Offset -->
+                                    <div class="col-sm-2">
+                                        <label for="calupper" class="col-form-label" data-toggle="tooltip"
+                                            title="Value by which the upper hive temperature display will be offset">Upper
+                                            Hive
+                                        </label>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <input type="number" class="form-control" name="calupper" id="calupper"
+                                            min="-25" max="25" step=".01" placeholder="0.0">
+                                    </div>
+                                    <!-- Calibration Offset -->
+
+                                    <!-- Enable Sensor -->
+                                    <div class="col-sm-4">
+                                        <fieldset class="form-group">
+                                            <div class="row justify-content-center">
+                                                <div class="col-sm-3">
+                                                    <div class="form-check">
+                                                        <label class="form-check-label" data-toggle="tooltip"
+                                                            title="Sensor enabled">
+                                                            <input type="radio" class="form-check-input"
+                                                                name="enableupper" id="enableupper" value="true">
+                                                            Enabled
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-check">
+                                                        <label class="form-check-label" data-toggle="tooltip"
+                                                            title="Sensor disabled">
+                                                            <input type="radio" class="form-check-input"
+                                                                name="enableupper" id="enableupper" value="false">
+                                                            Disabled
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </fieldset>
+                                    </div>
+                                    <!-- Enable Sensor -->
+
+                                </div>
+                                <!-- Upper Sensor Control -->
+
+                                <p></p>
+
+                                <!-- Center Sensor Control -->
+                                <div class="row col-sm-12 justify-content-center">
+
+                                    <!-- Calibration Offset -->
+                                    <div class="col-sm-2">
+                                        <label for="calcenter" class="col-form-label" data-toggle="tooltip"
+                                            title="Value by which the center hive temperature display will be offset">Center
+                                            Hive
+                                        </label>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <input type="number" class="form-control" name="calcenter" id="calcenter"
+                                            min="-25" max="25" step=".01" placeholder="0.0">
+                                    </div>
+                                    <!-- Calibration Offset -->
+
+                                    <!-- Enable Sensor -->
+                                    <div class="col-sm-4">
+                                        <fieldset class="form-group">
+                                            <div class="row justify-content-center">
+                                                <div class="col-sm-3">
+                                                    <div class="form-check">
+                                                        <label class="form-check-label" data-toggle="tooltip"
+                                                            title="Sensor enabled">
+                                                            <input type="radio" class="form-check-input"
+                                                                name="enablecenter" id="enablecenter" value="true">
+                                                            Enabled
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-check">
+                                                        <label class="form-check-label" data-toggle="tooltip"
+                                                            title="Sensor disabled">
+                                                            <input type="radio" class="form-check-input"
+                                                                name="enablecenter" id="enablecenter" value="false">
+                                                            Disabled
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </fieldset>
+                                    </div>
+                                    <!-- Enable Sensor -->
+
+                                </div>
+                                <!-- Center Sensor Control -->
+
+                                <p></p>
+
+                                <!-- Lower Sensor Control -->
+                                <div class="row col-sm-12 justify-content-center">
+
+                                    <!-- Calibration Offset -->
+                                    <div class="col-sm-2">
+                                        <label for="callower" class="col-form-label" data-toggle="tooltip"
+                                            title="Value by which the lower hive temperature display will be offset">Lower
+                                            Hive
+                                        </label>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <input type="number" class="form-control" name="callower" id="callower"
+                                            min="-25" max="25" step=".01" placeholder="0.0">
+                                    </div>
+                                    <!-- Calibration Offset -->
+
+                                    <!-- Enable Sensor -->
+                                    <div class="col-sm-4">
+                                        <fieldset class="form-group">
+                                            <div class="row justify-content-center">
+                                                <div class="col-sm-3">
+                                                    <div class="form-check">
+                                                        <label class="form-check-label" data-toggle="tooltip"
+                                                            title="Sensor enabled">
+                                                            <input type="radio" class="form-check-input"
+                                                                name="enablelower" id="enablelower" value="true">
+                                                            Enabled
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-check">
+                                                        <label class="form-check-label" data-toggle="tooltip"
+                                                            title="Sensor disabled">
+                                                            <input type="radio" class="form-check-input"
+                                                                name="enablelower" id="enablelower" value="false">
+                                                            Disabled
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </fieldset>
+                                    </div>
+                                    <!-- Enable Sensor -->
+
+                                </div>
+                                <!-- Lower Sensor Control -->
+
+                                <p></p>
+
+                                <!-- Output Sensor Control -->
+                                <div class="row col-sm-12 justify-content-center">
+
+                                    <!-- Calibration Offset -->
+                                    <div class="col-sm-2">
+                                        <label for="caloutput" class="col-form-label" data-toggle="tooltip"
+                                            title="Value by which the output temperature display will be offset">
+											Output
+                                        </label>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <input type="number" class="form-control" name="caloutput" id="caloutput"
+                                            min="-25" max="25" step=".01" placeholder="0.0">
+                                    </div>
+                                    <!-- Calibration Offset -->
+
+                                    <!-- Enable Sensor -->
+                                    <div class="col-sm-4">
+                                        <fieldset class="form-group">
+                                            <div class="row justify-content-center">
+                                                <div class="col-sm-3">
+                                                    <div class="form-check">
+                                                        <label class="form-check-label" data-toggle="tooltip"
+                                                            title="Sensor enabled">
+                                                            <input type="radio" class="form-check-input"
+                                                                name="enableoutput" id="enableoutput" value="true">
+                                                            Enabled
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-check">
+                                                        <label class="form-check-label" data-toggle="tooltip"
+                                                            title="Sensor disabled">
+                                                            <input type="radio" class="form-check-input"
+                                                                name="enableoutput" id="enableoutput" value="false">
+                                                            Disabled
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </fieldset>
+                                    </div>
+                                    <!-- Enable Sensor -->
+
+                                </div>
+                                <!-- Output Sensor Control -->
+
+                                <!-- Sensor Control Button -->
+                                <div class="row col-sm-12">
+                                    <div class="col text-center">
+                                        <button id="submitSettings" type="submit" class="btn btn-primary">Update</button>
+                                    </div>
+                                </div>
+                                <!-- Sensor Control Button -->
+
+                            </form> <!-- Sensor Control Form-->
+
+                        </div>
+
+                    </div> <!-- Sensor Control Tab -->
+
+                    <!-- Heat PWM Control Tab -->
+                    <div class="tab-pane fade" id="pwmheat">
+                        <div class="card-header">
+                            <h4 class="card-title">Temperature PWM Control</h4>
+                        </div>
+                        <div class="card-body">
+                            <p>
+                                Here you may enter a specific PWM setting for the heat
+                                output.  Any entry here will disconnect any temperature
+                                control and mite treatments.
+                            </p>
+
+                            <!-- Heat PWM Control Form-->
+                            <form class="form-group" id="pwmheat" action="/api/v1/config/" method="PUT"
+                                onsubmit="return processPost(this);">
+
+                                <!-- Heat PWM Control -->
+                                <div class="row col-sm-12 justify-content-center">
+
+                                    <!-- Heat PWM Setting Offset -->
+                                    <div class="col-sm-2">
+                                        <label for="pwmheat" class="col-form-label" data-toggle="tooltip"
+                                            title="Setting (0-100%) to apply to the Heat PWM control point.">
+                                            Heat PWM Percent
+                                        </label>
+                                    </div>
+                                    <div class="col-sm-10">
+                                        <input type="number" class="form-control" name="pwmheat" id="pwmheat"
+                                            min="0" max="100" step=".1" placeholder="0.0">
+                                    </div>
+                                    <!-- Heat PWM Setting Offset -->
+
+                                </div>
+                                <!-- Heat PWM Control -->
+
+                                <p></p>
+
+                                <!-- Heat PWM Control Button -->
+                                <div class="row col-sm-12">
+                                    <div class="col text-center">
+                                        <button id="submitSettings" type="submit" class="btn btn-primary"">Apply</button>
+                                    </div>
+                                </div>
+                                <!-- Heat PWM Control Button -->
+
+                            </form> <!-- Heat PWM Control Form-->
+
+                        </div>
+
+                    </div> <!-- Heat PWM Control Tab -->
+
+                    <!-- Fan PWM Control Tab -->
+                    <div class="tab-pane fade" id="pwmfan">
+                        <div class="card-header">
+                            <h4 class="card-title">Fan PWM Control</h4>
+                        </div>
+                        <div class="card-body">
+                            <p>
+                                Here you may enter a specific PWM setting for the fan
+                                output.  Any entry here will disconnect any temperature
+                                control and mite treatments.
+                            </p>
+
+                            <!-- Fan PWM Control Form-->
+                            <form class="form-group" id="pwmheat" action="/api/v1/config/" method="PUT"
+                                onsubmit="return processPost(this);">
+
+                                <!-- Fan PWM Control -->
+                                <div class="row col-sm-12 justify-content-center">
+
+                                    <!-- Fan PWM Control -->
+                                    <div class="col-sm-2">
+                                        <label for="pwmfan" class="col-form-label" data-toggle="tooltip"
+                                            title="Setting (0-100%) to apply to the Fan PWM control point.">
+                                            Fan PWM Percent
+                                        </label>
+                                    </div>
+                                    <div class="col-sm-10">
+                                        <input type="number" class="form-control" name="pwmfan" id="pwmfan"
+                                            min="0" max="100" step=".1" placeholder="0.0">
+                                    </div>
+                                    <!-- Fan PWM Control -->
+
+                                </div>
+                                <!-- Fan PWM Control -->
+
+                                <p></p>
+
+                                <!-- Fan PWM Control Button -->
+                                <div class="row col-sm-12">
+                                    <div class="col text-center">
+                                        <button id="submitSettings" type="submit" class="btn btn-primary"">Apply</button>
+                                    </div>
+                                </div>
+                                <!-- Fan PWM Control Button -->
+
+                            </form> <!-- Fan PWM Control Form-->
+
+                        </div>
+
+                    </div> <!-- Fan PWM Control Tab -->
+
+                    <!-- Reset Controller Tab -->
+                    <div class="tab-pane fade" id="reset">
+                        
+                        <div class="card-header">
+                            <h4 class="card-title">Reset Controller</h4>
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text">
+                                You can perform a simple reset on your Keg Cop by pressing the button below. This
+                                has the same effect as pressing the reset button on the controller, and will not
+                                harm your settings.
+                            </p>
+                            <div class="row col-sm-12">
+                                <p class="col text-center">
+                                    <a href="/controllerreset/" class="btn btn-warning">Reset Controller</a>
+                                </p>
+                            </div>
+                        </div>
+                    </div> <!-- Reset Controller Tab -->
+
+                    <!-- Update Application Tab -->
+                    <div class="tab-pane fade" id="update">
+                        
+                        <div class="card-header">
+                            <h4 class="card-title">Update Application</h4>
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text">
+                                Here you may choose to enter a workflow which will display the current
+								and available application versions.  If you desire, an online update
+								may be performed.
+                            </p>
+                            <div class="row col-sm-12">
+                                <p class="col text-center">
+                                    <a href="/ota1/" class="btn btn-success">Update</a>
+                                </p>
+                            </div>
+                        </div>
+                    </div> <!-- Update Application Tab -->
+
+                    <!-- Wifi Reset tab -->
+                    <div class="tab-pane fade" id="wifi">
+                        <div class="card-header">
+                            <h4 class="card-title">Reset Wifi Settings</h4>
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text">
+                                If you plan on relocating your Bee Snuggler to a new network, you can reset the WiFi
+                                connection settings by clicking "Reset WiFi". You will need to perform the the
+                                original network setup again by connecting to this device as an access point.
+                            </p>
+                            <form action="/wifi/">
+                                <div class="row col-sm-12">
+                                    <p class="col text-center">
+                                        <button type="submit" class="btn btn-danger" id="proceed">Reset WiFi</button>
+                                    </p>
+                                </div>
+                            </form>
+                        </div>
+                    </div> <!-- Wifi Reset tab -->
+
+                </div> <!-- Nav Tab Content -->
+
+            </div>
+
+        </div>
+
+    </main>
+
+    <footer class="mt-auto py-3 bg-dark footer">
+        <div class="container">
+            <span class="text-muted">Copyright © 2021, Lee C. Bussy</span>
+        </div>
+    </footer>
+
+    <script src="/jquery-3.6.0.min.js"></script>
+    <script src="/popper.min.js"></script>
+    <script src="/bootstrap.min.js"></script>
+
+    <script src="/alerts.js"></script>
+    <script src="/common.js"></script>
+    <script src="/contexthelp.js"></script>
+    <script src="/settings.js"></script>
+    <script src="/bootstrap-slider.min.js"></script>
+
+</body>
+
+</html>

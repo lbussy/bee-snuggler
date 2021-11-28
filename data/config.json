@@ -1,0 +1,43 @@
+{
+    "apconfig": {
+        "ssid": "beesnuggler",
+        "passphrase": "beesnuggler"
+    },
+    "snugconfig": {
+        "guid": "0123456789ABCDEF",
+        "hostname": "beesnuggler",
+        "nodrd": true,
+        "yardname": "Yard 1",
+        "hivename": "Hive 1",
+        "imperial": true,
+        "fancontrol": true,
+        "propfan": true,
+        "fanrangehigh": 100,
+        "fanrangelow": 25
+    },
+    "ota": {
+        "dospiffs1": false,
+        "dospiffs2": false,
+        "didupdate": false
+    },
+    "temps": {
+        "setpoint": 40,
+        "controlpoint": 2,
+        "controlenabled": false,
+        "treatpoint": 108.00,
+        "treatperiod": 180,
+        "coolperiod": 5,
+        "outputmax": 130.00,
+        "enablemaxout": false,
+        "ambientenabled": true,
+        "ambientcal": 0,
+        "upperenabled": true,
+        "uppercal": 0,
+        "centerenabled": true,
+        "centercal": 0,
+        "lowerenabled": true,
+        "lowercal": 0,
+        "outputenabled": true,
+        "outputcal": 0
+    }
+}

@@ -1,0 +1,9 @@
+/.exclude.files
+/*.gz
+/*.png
+/*.jpg
+/*.ico
+/*.svg
+/*.xml
+/README.md
+/site.webmanifest
